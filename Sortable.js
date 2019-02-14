@@ -94,6 +94,7 @@
 
 		IE11OrLess = !!navigator.userAgent.match(/(?:Trident.*rv[ :]?11\.|msie|iemobile)/i),
 		Edge = !!navigator.userAgent.match(/Edge/i),
+		Safari = !!(~navigator.userAgent.indexOf('safari') && !~navigator.userAgent.indexOf('chrome') && !~navigator.userAgent.indexOf('android')),
 		// FireFox = !!navigator.userAgent.match(/firefox/i),
 
 		CSSFloatProperty = Edge || IE11OrLess ? 'cssFloat' : 'float',
@@ -1022,7 +1023,7 @@
 				_css(ghostEl, 'width', rect.width);
 				_css(ghostEl, 'height', rect.height);
 				_css(ghostEl, 'opacity', '0.8');
-				_css(ghostEl, 'position', 'fixed');
+				_css(ghostEl, 'position', (Safari ? 'absolute' : 'fixed'));
 				_css(ghostEl, 'zIndex', '100000');
 				_css(ghostEl, 'pointerEvents', 'none');
 
